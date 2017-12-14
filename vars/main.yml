@@ -1,2 +1,2 @@
 ---
-# vars file for ansible-role-crackmapexec
+cme_git_location: '/opt'

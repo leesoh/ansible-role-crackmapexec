@@ -1,2 +1,32 @@
 ---
-# tasks file for ansible-role-crackmapexec
+- name: Install dependencies
+  become: true
+  when: ansible_os_family == "Debian"
+  apt: name={{ item }} state=installed update_cache=yes
+  with_items:
+    - libssl-dev
+    - libffi-dev
+    - python-dev
+    - build-essential
+ 
+- name: Clone repository
+  become: true
+  git:
+    repo: https://github.com/byt3bl33d3r/CrackMapExec
+    dest: "{{ cme_git_location }}/crackmapexec"
+    update: yes
+    recursive: yes
+
+- name: Install Python requirements
+  shell: pipenv install
+  environment:
+    PATH: "$HOME/.local/bin:{{ ansible_env.PATH }}"
+  args:
+    chdir: "{{ cme_git_location }}/crackmapexec"
+    
+- name: Install CrackMapExec
+  become: true
+  become_flags: -E
+  command: pipenv run python setup.py install
+  args:
+    chdir: "{{ cme_git_location }}/crackmapexec"
