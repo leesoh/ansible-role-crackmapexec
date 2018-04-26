@@ -2,7 +2,7 @@
 - name: Install dependencies
   become: true
   when: ansible_os_family == "Debian"
-  apt: name={{ item }} state=installed update_cache=yes
+  apt: name={{ item }} state=present update_cache=yes
   with_items:
     - libssl-dev
     - libffi-dev
