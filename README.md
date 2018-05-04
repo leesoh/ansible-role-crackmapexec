@@ -21,14 +21,14 @@ leesoh.pipenv
 Example Playbook
 ----------------
 
-    - hosts: servers
-      roles:
-         - { role: leesoh.crackmapexec }
+- hosts: servers
+  roles:
+      - { role: leesoh.crackmapexec }
 
 License
 -------
 
-BSD
+BSD-3
 
 Author Information
 ------------------

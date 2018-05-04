@@ -10,7 +10,6 @@ install:
     - pip install ansible
 
 script:
-    # Install package to pull in dependencies
     - ansible-galaxy install leesoh.crackmapexec
     - ansible-playbook -i tests/inventory tests/test.yml --syntax-check
     - ansible-playbook -i tests/inventory tests/test.yml --connection=local

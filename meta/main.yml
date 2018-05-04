@@ -2,7 +2,7 @@ galaxy_info:
   author: liam somerville
   description: A swiss army knife for pentesting networks
 
-  license: BSD
+  license: BSD-3
 
   min_ansible_version: 2.2
 
@@ -12,7 +12,10 @@ galaxy_info:
     - all
   - name: Ubuntu
     versions:
-    - all
+    - bionic
+    - artful
+    - zesty
+    - trusty
 
   galaxy_tags:
     - pentest
