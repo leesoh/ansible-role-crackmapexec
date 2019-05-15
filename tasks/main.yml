@@ -11,8 +11,10 @@
 - name: Install dependencies
   become: true
   when: ansible_os_family == "Debian" and crackmapexec.changed
-  apt: name={{ item }} state=present update_cache=yes
-  name: ['libssl-dev', 'libffi-dev', 'python-dev', 'build-essential']
+  apt:
+    name: ['libssl-dev', 'libffi-dev', 'python-dev', 'build-essential']
+    state: present
+    update_cache: yes
 
 - name: Install Python requirements
   when: crackmapexec.changed
