@@ -12,11 +12,7 @@
   become: true
   when: ansible_os_family == "Debian" and crackmapexec.changed
   apt: name={{ item }} state=present update_cache=yes
-  with_items:
-    - libssl-dev
-    - libffi-dev
-    - python-dev
-    - build-essential
+  name: ['libssl-dev', 'libffi-dev', 'python-dev', 'build-essential']
 
 - name: Install Python requirements
   when: crackmapexec.changed
